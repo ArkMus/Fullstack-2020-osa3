@@ -4,6 +4,10 @@
   "description": "Fullstack course held by University of Helsinki.",
   "main": "index.js",
   "scripts": {
+    "build:ui": "rm -rf build && cd ../../Fullstack-2020/osa2/puhelinluettelo/ && npm run build --prod && cp -r build/ ../../../etc/Fullstack-2020-osa3/",
+    "deploy": "git push heroku master",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
+    "logs:prod": "heroku logs --tail",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
